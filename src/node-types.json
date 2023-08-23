@@ -45,7 +45,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "action",
@@ -57,6 +57,10 @@
         },
         {
           "type": "directive_merge",
+          "named": true
+        },
+        {
+          "type": "grammar_rule_identifier",
           "named": true
         },
         {
@@ -126,6 +130,36 @@
     "fields": {}
   },
   {
+    "type": "decl_header",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_inial_action",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "decl_initial_declaration",
     "named": true,
     "fields": {},
@@ -135,6 +169,21 @@
       "types": [
         {
           "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_name_prefix",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -179,6 +228,36 @@
     }
   },
   {
+    "type": "decl_output",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_parse_param",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "decl_printer",
     "named": true,
     "fields": {},
@@ -199,6 +278,21 @@
   },
   {
     "type": "decl_require",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_skeleton",
     "named": true,
     "fields": {},
     "children": {
@@ -250,10 +344,14 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "char_quoted",
+          "named": true
+        },
+        {
+          "type": "grammar_rule_identifier",
           "named": true
         },
         {
@@ -319,11 +417,23 @@
           "named": true
         },
         {
+          "type": "decl_inial_action",
+          "named": true
+        },
+        {
           "type": "decl_initial_declaration",
           "named": true
         },
         {
           "type": "decl_locations",
+          "named": true
+        },
+        {
+          "type": "decl_name_prefix",
+          "named": true
+        },
+        {
+          "type": "decl_no_lines",
           "named": true
         },
         {
@@ -335,11 +445,27 @@
           "named": true
         },
         {
+          "type": "decl_output",
+          "named": true
+        },
+        {
+          "type": "decl_parse_param",
+          "named": true
+        },
+        {
           "type": "decl_printer",
           "named": true
         },
         {
+          "type": "decl_pure_parser",
+          "named": true
+        },
+        {
           "type": "decl_require",
+          "named": true
+        },
+        {
+          "type": "decl_skeleton",
           "named": true
         },
         {
@@ -351,11 +477,23 @@
           "named": true
         },
         {
+          "type": "decl_token_table",
+          "named": true
+        },
+        {
           "type": "decl_type",
           "named": true
         },
         {
           "type": "decl_union",
+          "named": true
+        },
+        {
+          "type": "decl_verbose",
+          "named": true
+        },
+        {
+          "type": "decl_yacc",
           "named": true
         }
       ]
@@ -364,7 +502,17 @@
   {
     "type": "directive_merge",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "grammar_rule",
@@ -375,15 +523,28 @@
       "required": true,
       "types": [
         {
+          "type": "action",
+          "named": true
+        },
+        {
           "type": "component",
           "named": true
         },
         {
           "type": "directive_empty",
           "named": true
+        },
+        {
+          "type": "grammar_rule_identifier",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "grammar_rule_identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "grammar_rules_body",
@@ -393,6 +554,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "declaration",
+          "named": true
+        },
         {
           "type": "grammar_rule",
           "named": true
@@ -493,9 +658,24 @@
     }
   },
   {
-    "type": "type_tag",
+    "type": "type",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "type_tag",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "type",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "\"",
@@ -526,7 +706,19 @@
     "named": false
   },
   {
+    "type": "%header",
+    "named": false
+  },
+  {
+    "type": "%initial-action",
+    "named": false
+  },
+  {
     "type": "%initial-declaration",
+    "named": false
+  },
+  {
+    "type": "%language",
     "named": false
   },
   {
@@ -534,7 +726,19 @@
     "named": false
   },
   {
+    "type": "%name-prefix",
+    "named": false
+  },
+  {
     "type": "%nterm",
+    "named": false
+  },
+  {
+    "type": "%output",
+    "named": false
+  },
+  {
+    "type": "%parse-param",
     "named": false
   },
   {
@@ -543,6 +747,10 @@
   },
   {
     "type": "%require",
+    "named": false
+  },
+  {
+    "type": "%skeleton",
     "named": false
   },
   {
@@ -582,6 +790,10 @@
     "named": false
   },
   {
+    "type": "-",
+    "named": false
+  },
+  {
     "type": ".",
     "named": false
   },
@@ -591,6 +803,14 @@
   },
   {
     "type": "/*",
+    "named": false
+  },
+  {
+    "type": "//",
+    "named": false
+  },
+  {
+    "type": "1",
     "named": false
   },
   {
@@ -618,7 +838,11 @@
     "named": false
   },
   {
-    "type": "_",
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
@@ -630,11 +854,27 @@
     "named": true
   },
   {
-    "type": "decl_header",
+    "type": "decl_locations",
     "named": true
   },
   {
-    "type": "decl_locations",
+    "type": "decl_no_lines",
+    "named": true
+  },
+  {
+    "type": "decl_pure_parser",
+    "named": true
+  },
+  {
+    "type": "decl_token_table",
+    "named": true
+  },
+  {
+    "type": "decl_verbose",
+    "named": true
+  },
+  {
+    "type": "decl_yacc",
     "named": true
   },
   {
@@ -660,6 +900,10 @@
   {
     "type": "number_literal",
     "named": true
+  },
+  {
+    "type": "opt",
+    "named": false
   },
   {
     "type": "precedence",

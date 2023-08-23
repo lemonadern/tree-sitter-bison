@@ -65,6 +65,7 @@ bool tree_sitter_bison_external_scanner_scan(
   const bool *valid_symbols) {
 
   int scope_level = 0;
+  uint32_t previous_char = 0;
 
   lexer->result_symbol = UNDELIMITED_CODE_BLOCK;
 
@@ -81,12 +82,20 @@ bool tree_sitter_bison_external_scanner_scan(
 	case '}':
 	  scope_level--;
 	  break;
+	case '%': // Opening digraph, supported by bison, "<%" is equivalent to "{"
+	  if (previous_char == '<')
+		scope_level++;
+	  break;
+	case'>': // Closing digraph, supported by bison, "%>" equivalent to "}"
+	  if (previous_char == '%')
+		scope_level--;
+	  break;
 	}
 
 	lexer->advance(lexer, false);
-
   }
 
+  previous_char = lexer->lookahead;
   lexer->mark_end(lexer);
 
   return true;

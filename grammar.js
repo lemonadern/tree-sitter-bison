@@ -47,7 +47,9 @@ module.exports = grammar({
 				repeat(
 					choice(
 						$.prologue,
-						$.declaration)),
+						seq(
+							$.declaration,
+							optional(';')))),
 				$.grammar_rules_section),
 
 		prologue: $ =>
@@ -68,20 +70,23 @@ module.exports = grammar({
 				$.grammar_rules_body,
 				optional(
 					seq('%%',
-						$.undelimited_code_block))
-
-			),
+						$.undelimited_code_block))),
 
 		grammar_rules_body: $ =>
-			repeat1($.grammar_rule),
+			repeat1(
+				choice(
+					$.grammar_rule,
+					seq($.declaration, ';'))),
 
 		grammar_rule: $ =>
 			seq(
-				RESULT,
+				$.grammar_rule_identifier,
 				':',
 				seq(
 					choice(
-						$.directive_empty,
+						seq(optional($.action),
+							$.directive_empty,
+							optional($.action)),
 						repeat1($.component)),
 					repeat(
 						seq(
@@ -89,12 +94,13 @@ module.exports = grammar({
 							choice(
 								$.directive_empty,
 								repeat1($.component))))),
-				';'
-			),
+				';'),
 
 		component: $ =>
 			choice(
-				IDENTIFIER,
+				seq(
+					$.grammar_rule_identifier,
+					optional(seq('[', IDENTIFIER, ']'))),
 				$.char_quoted,
 				$.string_literal,
 				$.action,
@@ -123,21 +129,33 @@ module.exports = grammar({
 				$.decl_union,
 				$.decl_debug,
 				$.decl_header,
-				$.decl_locations),
+				$.decl_locations,
+				$.decl_name_prefix,
+				$.decl_no_lines,
+				$.decl_no_lines,
+				$.decl_output,
+				$.decl_pure_parser,
+				$.decl_skeleton,
+				$.decl_token_table,
+				$.decl_verbose,
+				$.decl_yacc,
+				$.decl_inial_action,
+				$.decl_parse_param),
 
 		decl_type: $ =>
 			seq('%type',
 				optional($.type_tag),
 				repeat1(
 					choice(
-						IDENTIFIER,
+						$.grammar_rule_identifier,
 						$.char_quoted,
 						$.string_literal)
 				),
 				repeat(
 					seq($.type_tag,
 						repeat1(
-							choice(IDENTIFIER,
+							choice(
+								$.grammar_rule_identifier,
 								$.char_quoted,
 								$.string_literal))))),
 
@@ -231,7 +249,7 @@ module.exports = grammar({
 						$.type_tag,
 						seq('<',
 							optional('*'),
-						'>'),
+							'>'),
 						IDENTIFIER))),
 
 		decl_expect: $ =>
@@ -267,7 +285,10 @@ module.exports = grammar({
 
 		decl_code: $ =>
 			seq('%code',
-				optional(IDENTIFIER),
+				optional(
+					seq(
+						IDENTIFIER,
+						repeat(seq('-', IDENTIFIER)))),
 				$.code_block
 			),
 
@@ -280,10 +301,56 @@ module.exports = grammar({
 			seq('%debug'),
 
 		decl_header: $ =>
-			token('%header'),
+			seq(
+				'%header',
+				optional($.string_literal)),
+
+		decl_language: $ =>
+			seq(
+				'%language',
+				$.string_literal),
 
 		decl_locations: $ =>
 			token('%locations'),
+
+		decl_name_prefix: $ =>
+			seq(
+				'%name-prefix',
+				$.string_literal),
+
+		decl_no_lines: $ =>
+			token('%no-lines'),
+
+		decl_output: $ =>
+			seq(
+				'%output',
+				$.string_literal),
+
+		decl_pure_parser: $ =>
+			token('%pure-parser'),
+
+		decl_skeleton: $ =>
+			seq('%skeleton',
+				$.string_literal),
+
+		decl_token_table: $ =>
+			token('%token-table'),
+
+		decl_verbose: $ =>
+			token('%verbose'),
+
+		decl_yacc: $ =>
+			token('%yacc'),
+
+		decl_inial_action: $ =>
+			seq(
+				'%initial-action',
+				$.code_block),
+
+		decl_parse_param: $ =>
+			seq(
+				'%parse-param',
+				$.code_block),
 
 		directive: $ =>
 			choice(
@@ -294,7 +361,7 @@ module.exports = grammar({
 			seq(
 				'%merge',
 				'<',
-				IDENTIFIER,
+				$.type,
 				'>'),
 
 		directive_empty: $ =>
@@ -343,20 +410,30 @@ module.exports = grammar({
 				)),
 				/[uUlLwWfFbBdD]*/,
 			));
-			},
+		},
 
 		type_tag: $ =>
 			seq(
 				'<',
-				seq(
-					seq(
-						IDENTIFIER,
-						repeat(
-							seq(
-								'_',
-								IDENTIFIER))),
-					optional('*')),
+				$.type,
 				'>'),
+
+		type: $ =>
+			seq(
+				IDENTIFIER,
+				repeat(
+					IDENTIFIER),
+				optional('*')),
+
+		grammar_rule_identifier: $ =>
+			seq(
+				IDENTIFIER,
+				optional(
+					seq('.',
+						choice(
+							'opt',
+							// TODO: find the actual rule for suffixes
+							'1')))),
 
 		code_block: $ =>
 			seq('{',
@@ -370,10 +447,12 @@ module.exports = grammar({
 				'\''),
 
 		comment: $ =>
-			seq(
-				'/*',
-				/[^*]*\*+([^/*][^*]*\*+)*/,
-				'/'),
+			choice(
+				seq('//', /.*/),
+				seq(
+					'/*',
+					/[^*]*\*+([^/*][^*]*\*+)*/,
+					'/')),
 
 	}
 });
