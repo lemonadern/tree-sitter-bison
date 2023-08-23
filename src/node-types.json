@@ -1,0 +1,700 @@
+[
+  {
+    "type": "action",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "char_quoted",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "code_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "undelimited_code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "component",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "char_quoted",
+          "named": true
+        },
+        {
+          "type": "directive_merge",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_code",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_debug",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "decl_define",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_destructor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_expect",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "decl_initial_declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_nterm",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_op_precedence",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "char_quoted",
+          "named": true
+        },
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_printer",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_require",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_start",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "decl_token",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "number_literal",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "char_quoted",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "type_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_union",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "decl_code",
+          "named": true
+        },
+        {
+          "type": "decl_debug",
+          "named": true
+        },
+        {
+          "type": "decl_define",
+          "named": true
+        },
+        {
+          "type": "decl_destructor",
+          "named": true
+        },
+        {
+          "type": "decl_expect",
+          "named": true
+        },
+        {
+          "type": "decl_glr_parser",
+          "named": true
+        },
+        {
+          "type": "decl_header",
+          "named": true
+        },
+        {
+          "type": "decl_initial_declaration",
+          "named": true
+        },
+        {
+          "type": "decl_locations",
+          "named": true
+        },
+        {
+          "type": "decl_nterm",
+          "named": true
+        },
+        {
+          "type": "decl_op_precedence",
+          "named": true
+        },
+        {
+          "type": "decl_printer",
+          "named": true
+        },
+        {
+          "type": "decl_require",
+          "named": true
+        },
+        {
+          "type": "decl_start",
+          "named": true
+        },
+        {
+          "type": "decl_token",
+          "named": true
+        },
+        {
+          "type": "decl_type",
+          "named": true
+        },
+        {
+          "type": "decl_union",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "directive_merge",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "grammar_rule",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "component",
+          "named": true
+        },
+        {
+          "type": "directive_empty",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "grammar_rules_body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "grammar_rule",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "grammar_rules_section",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "grammar_rules_body",
+          "named": true
+        },
+        {
+          "type": "undelimited_code_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "prologue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "prologue_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "prologue_body",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "sections",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "declaration",
+          "named": true
+        },
+        {
+          "type": "grammar_rules_section",
+          "named": true
+        },
+        {
+          "type": "prologue",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "string_literal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "string_content",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_tag",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "\"",
+    "named": false
+  },
+  {
+    "type": "%",
+    "named": false
+  },
+  {
+    "type": "%%",
+    "named": false
+  },
+  {
+    "type": "%code",
+    "named": false
+  },
+  {
+    "type": "%debug",
+    "named": false
+  },
+  {
+    "type": "%define",
+    "named": false
+  },
+  {
+    "type": "%destructor",
+    "named": false
+  },
+  {
+    "type": "%initial-declaration",
+    "named": false
+  },
+  {
+    "type": "%merge",
+    "named": false
+  },
+  {
+    "type": "%nterm",
+    "named": false
+  },
+  {
+    "type": "%printer",
+    "named": false
+  },
+  {
+    "type": "%require",
+    "named": false
+  },
+  {
+    "type": "%start",
+    "named": false
+  },
+  {
+    "type": "%token",
+    "named": false
+  },
+  {
+    "type": "%type",
+    "named": false
+  },
+  {
+    "type": "%union",
+    "named": false
+  },
+  {
+    "type": "%{",
+    "named": false
+  },
+  {
+    "type": "%}",
+    "named": false
+  },
+  {
+    "type": "'",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": "*",
+    "named": false
+  },
+  {
+    "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
+    "named": false
+  },
+  {
+    "type": "/*",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "L\"",
+    "named": false
+  },
+  {
+    "type": "U\"",
+    "named": false
+  },
+  {
+    "type": "_",
+    "named": false
+  },
+  {
+    "type": "_(",
+    "named": false
+  },
+  {
+    "type": "decl_glr_parser",
+    "named": true
+  },
+  {
+    "type": "decl_header",
+    "named": true
+  },
+  {
+    "type": "decl_locations",
+    "named": true
+  },
+  {
+    "type": "directive_empty",
+    "named": true
+  },
+  {
+    "type": "expect",
+    "named": false
+  },
+  {
+    "type": "expect-rr",
+    "named": false
+  },
+  {
+    "type": "left",
+    "named": false
+  },
+  {
+    "type": "nonassoc",
+    "named": false
+  },
+  {
+    "type": "number_literal",
+    "named": true
+  },
+  {
+    "type": "precedence",
+    "named": false
+  },
+  {
+    "type": "right",
+    "named": false
+  },
+  {
+    "type": "string_content",
+    "named": true
+  },
+  {
+    "type": "u\"",
+    "named": false
+  },
+  {
+    "type": "u8\"",
+    "named": false
+  },
+  {
+    "type": "undelimited_code_block",
+    "named": true
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "|",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]
