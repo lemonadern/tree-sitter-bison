@@ -113,36 +113,36 @@ module.exports = grammar({
 
 		declaration: $ =>
 			choice(
-				$.decl_type,
-				$.decl_require,
-				$.decl_token,
-				$.decl_nterm,
-				$.decl_op_precedence,
-				$.decl_initial_declaration,
-				$.decl_glr_parser,
-				$.decl_destructor,
-				$.decl_printer,
-				$.decl_expect,
-				$.decl_start,
-				$.decl_define,
-				$.decl_code,
-				$.decl_union,
-				$.decl_debug,
-				$.decl_header,
-				$.decl_locations,
-				$.decl_name_prefix,
-				$.decl_no_lines,
-				$.decl_no_lines,
-				$.decl_output,
-				$.decl_pure_parser,
-				$.decl_skeleton,
-				$.decl_token_table,
-				$.decl_verbose,
-				$.decl_yacc,
-				$.decl_inial_action,
-				$.decl_parse_param),
+				$._decl_type,
+				$._decl_require,
+				$._decl_token,
+				$._decl_nterm,
+				$._decl_op_precedence,
+				$._decl_initial_declaration,
+				$._decl_glr_parser,
+				$._decl_destructor,
+				$._decl_printer,
+				$._decl_expect,
+				$._decl_start,
+				$._decl_define,
+				$._decl_code,
+				$._decl_union,
+				$._decl_debug,
+				$._decl_header,
+				$._decl_locations,
+				$._decl_name_prefix,
+				$._decl_no_lines,
+				$._decl_no_lines,
+				$._decl_output,
+				$._decl_pure_parser,
+				$._decl_skeleton,
+				$._decl_token_table,
+				$._decl_verbose,
+				$._decl_yacc,
+				$._decl_inial_action,
+				$._decl_parse_param),
 
-		decl_type: $ =>
+		_decl_type: $ =>
 			seq(declarationName('%type'),
 				optional($.type_tag),
 				repeat1(
@@ -159,12 +159,12 @@ module.exports = grammar({
 								$.char_quoted,
 								$.string_literal))))),
 
-		decl_require: $ =>
+		_decl_require: $ =>
 			seq(
 				declarationName('%require'),
 				$.string_literal),
 
-		decl_token: $ =>
+		_decl_token: $ =>
 			seq(
 				declarationName('%token'),
 				optional($.type_tag),
@@ -182,7 +182,7 @@ module.exports = grammar({
 								optional($.number_literal),
 								optional($.string_literal)))))),
 
-		decl_nterm: $ =>
+		_decl_nterm: $ =>
 			seq(
 				declarationName('%nterm'),
 				optional($.type_tag),
@@ -192,7 +192,7 @@ module.exports = grammar({
 						$.type_tag,
 						repeat(IDENTIFIER)))),
 
-		decl_op_precedence: $ =>
+		_decl_op_precedence: $ =>
 			seq(
 				declarationName(
 					seq('%',
@@ -220,15 +220,15 @@ module.exports = grammar({
 									$.char_quoted),
 								optional($.number_literal)))))),
 
-		decl_initial_declaration: $ =>
+		_decl_initial_declaration: $ =>
 			seq(
 				declarationName('%initial-declaration'),
 				$.code_block),
 
-		decl_glr_parser: $ =>
+		_decl_glr_parser: $ =>
 			declarationName('%glr-parser'),
 
-		decl_destructor: $ =>
+		_decl_destructor: $ =>
 			seq(
 				declarationName('%destructor'),
 				$.code_block,
@@ -241,7 +241,7 @@ module.exports = grammar({
 							'>'),
 						IDENTIFIER))),
 
-		decl_printer: $ =>
+		_decl_printer: $ =>
 			seq(
 				declarationName('%printer'),
 				$.code_block,
@@ -253,7 +253,7 @@ module.exports = grammar({
 							'>'),
 						IDENTIFIER))),
 
-		decl_expect: $ =>
+		_decl_expect: $ =>
 			seq(
 				declarationName(
 					seq('%',
@@ -262,11 +262,11 @@ module.exports = grammar({
 							'expect-rr'))),
 				token(/[0-9]+/)),
 
-		decl_start: $ =>
+		_decl_start: $ =>
 			seq(declarationName('%start'),
 				IDENTIFIER),
 
-		decl_define: $ =>
+		_decl_define: $ =>
 			seq(
 				declarationName('%define'),
 				seq(
@@ -285,7 +285,7 @@ module.exports = grammar({
 							'}'),
 						$.string_literal))),
 
-		decl_code: $ =>
+		_decl_code: $ =>
 			seq(declarationName('%code'),
 				optional(
 					seq(
@@ -294,62 +294,62 @@ module.exports = grammar({
 				$.code_block
 			),
 
-		decl_union: $ =>
+		_decl_union: $ =>
 			seq(declarationName('%union'),
 				optional(IDENTIFIER),
 				$.code_block),
 
-		decl_debug: $ =>
+		_decl_debug: $ =>
 			declarationName('%debug'),
 
-		decl_header: $ =>
+		_decl_header: $ =>
 			seq(
 				declarationName('%header'),
 				optional($.string_literal)),
 
-		decl_language: $ =>
+		_decl_language: $ =>
 			seq(
 				declarationName('%language'),
-				$.string_literal),
+				field('language', $.string_literal)),
 
-		decl_locations: $ =>
+		_decl_locations: $ =>
 			declarationName('%locations'),
 
-		decl_name_prefix: $ =>
+		_decl_name_prefix: $ =>
 			seq(
 				declarationName('%name-prefix'),
 				$.string_literal),
 
-		decl_no_lines: $ =>
+		_decl_no_lines: $ =>
 			declarationName('%no-lines'),
 
-		decl_output: $ =>
+		_decl_output: $ =>
 			seq(
 				declarationName('%output'),
 				$.string_literal),
 
-		decl_pure_parser: $ =>
+		_decl_pure_parser: $ =>
 			declarationName('%pure-parser'),
 
-		decl_skeleton: $ =>
+		_decl_skeleton: $ =>
 			seq(declarationName('%skeleton'),
 				$.string_literal),
 
-		decl_token_table: $ =>
+		_decl_token_table: $ =>
 			declarationName('%token-table'),
 
-		decl_verbose: $ =>
+		_decl_verbose: $ =>
 			declarationName('%verbose'),
 
-		decl_yacc: $ =>
+		_decl_yacc: $ =>
 			declarationName('%yacc'),
 
-		decl_inial_action: $ =>
+		_decl_inial_action: $ =>
 			seq(
 				declarationName('%initial-action'),
 				$.code_block),
 
-		decl_parse_param: $ =>
+		_decl_parse_param: $ =>
 			seq(
 				declarationName('%parse-param'),
 				$.code_block),

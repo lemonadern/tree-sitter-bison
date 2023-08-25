@@ -71,105 +71,7 @@
     }
   },
   {
-    "type": "decl_code",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%code",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_debug",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%debug",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_define",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%define",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_destructor",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%destructor",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        },
-        {
-          "type": "type_tag",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_expect",
+    "type": "declaration",
     "named": true,
     "fields": {
       "name": {
@@ -178,6 +80,106 @@
         "types": [
           {
             "type": "%",
+            "named": false
+          },
+          {
+            "type": "%code",
+            "named": false
+          },
+          {
+            "type": "%debug",
+            "named": false
+          },
+          {
+            "type": "%define",
+            "named": false
+          },
+          {
+            "type": "%destructor",
+            "named": false
+          },
+          {
+            "type": "%glr-parser",
+            "named": false
+          },
+          {
+            "type": "%header",
+            "named": false
+          },
+          {
+            "type": "%initial-action",
+            "named": false
+          },
+          {
+            "type": "%initial-declaration",
+            "named": false
+          },
+          {
+            "type": "%locations",
+            "named": false
+          },
+          {
+            "type": "%name-prefix",
+            "named": false
+          },
+          {
+            "type": "%no-lines",
+            "named": false
+          },
+          {
+            "type": "%nterm",
+            "named": false
+          },
+          {
+            "type": "%output",
+            "named": false
+          },
+          {
+            "type": "%parse-param",
+            "named": false
+          },
+          {
+            "type": "%printer",
+            "named": false
+          },
+          {
+            "type": "%pure-parser",
+            "named": false
+          },
+          {
+            "type": "%require",
+            "named": false
+          },
+          {
+            "type": "%skeleton",
+            "named": false
+          },
+          {
+            "type": "%start",
+            "named": false
+          },
+          {
+            "type": "%token",
+            "named": false
+          },
+          {
+            "type": "%token-table",
+            "named": false
+          },
+          {
+            "type": "%type",
+            "named": false
+          },
+          {
+            "type": "%union",
+            "named": false
+          },
+          {
+            "type": "%verbose",
+            "named": false
+          },
+          {
+            "type": "%yacc",
             "named": false
           },
           {
@@ -186,200 +188,6 @@
           },
           {
             "type": "expect-rr",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_glr_parser",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%glr-parser",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_header",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%header",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_inial_action",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%initial-action",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_initial_declaration",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%initial-declaration",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_locations",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%locations",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_name_prefix",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%name-prefix",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_no_lines",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%no-lines",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_nterm",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%nterm",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "type_tag",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_op_precedence",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "%",
             "named": false
           },
           {
@@ -410,201 +218,13 @@
           "named": true
         },
         {
-          "type": "number_literal",
-          "named": true
-        },
-        {
-          "type": "type_tag",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_output",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%output",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_parse_param",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%parse-param",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_printer",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%printer",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
           "type": "code_block",
           "named": true
         },
         {
-          "type": "type_tag",
+          "type": "grammar_rule_identifier",
           "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_pure_parser",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%pure-parser",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_require",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%require",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_skeleton",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%skeleton",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "string_literal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_start",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%start",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_token",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%token",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
+        },
         {
           "type": "number_literal",
           "named": true
@@ -619,237 +239,6 @@
         },
         {
           "type": "type_tag",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_token_table",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%token-table",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_type",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%type",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "char_quoted",
-          "named": true
-        },
-        {
-          "type": "grammar_rule_identifier",
-          "named": true
-        },
-        {
-          "type": "string_literal",
-          "named": true
-        },
-        {
-          "type": "type_tag",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_union",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%union",
-            "named": false
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "code_block",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "decl_verbose",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%verbose",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "decl_yacc",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "%yacc",
-            "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "declaration",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "decl_code",
-          "named": true
-        },
-        {
-          "type": "decl_debug",
-          "named": true
-        },
-        {
-          "type": "decl_define",
-          "named": true
-        },
-        {
-          "type": "decl_destructor",
-          "named": true
-        },
-        {
-          "type": "decl_expect",
-          "named": true
-        },
-        {
-          "type": "decl_glr_parser",
-          "named": true
-        },
-        {
-          "type": "decl_header",
-          "named": true
-        },
-        {
-          "type": "decl_inial_action",
-          "named": true
-        },
-        {
-          "type": "decl_initial_declaration",
-          "named": true
-        },
-        {
-          "type": "decl_locations",
-          "named": true
-        },
-        {
-          "type": "decl_name_prefix",
-          "named": true
-        },
-        {
-          "type": "decl_no_lines",
-          "named": true
-        },
-        {
-          "type": "decl_nterm",
-          "named": true
-        },
-        {
-          "type": "decl_op_precedence",
-          "named": true
-        },
-        {
-          "type": "decl_output",
-          "named": true
-        },
-        {
-          "type": "decl_parse_param",
-          "named": true
-        },
-        {
-          "type": "decl_printer",
-          "named": true
-        },
-        {
-          "type": "decl_pure_parser",
-          "named": true
-        },
-        {
-          "type": "decl_require",
-          "named": true
-        },
-        {
-          "type": "decl_skeleton",
-          "named": true
-        },
-        {
-          "type": "decl_start",
-          "named": true
-        },
-        {
-          "type": "decl_token",
-          "named": true
-        },
-        {
-          "type": "decl_token_table",
-          "named": true
-        },
-        {
-          "type": "decl_type",
-          "named": true
-        },
-        {
-          "type": "decl_union",
-          "named": true
-        },
-        {
-          "type": "decl_verbose",
-          "named": true
-        },
-        {
-          "type": "decl_yacc",
           "named": true
         }
       ]

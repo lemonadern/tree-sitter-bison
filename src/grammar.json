@@ -306,119 +306,119 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "decl_type"
+          "name": "_decl_type"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_require"
+          "name": "_decl_require"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_token"
+          "name": "_decl_token"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_nterm"
+          "name": "_decl_nterm"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_op_precedence"
+          "name": "_decl_op_precedence"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_initial_declaration"
+          "name": "_decl_initial_declaration"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_glr_parser"
+          "name": "_decl_glr_parser"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_destructor"
+          "name": "_decl_destructor"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_printer"
+          "name": "_decl_printer"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_expect"
+          "name": "_decl_expect"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_start"
+          "name": "_decl_start"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_define"
+          "name": "_decl_define"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_code"
+          "name": "_decl_code"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_union"
+          "name": "_decl_union"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_debug"
+          "name": "_decl_debug"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_header"
+          "name": "_decl_header"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_locations"
+          "name": "_decl_locations"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_name_prefix"
+          "name": "_decl_name_prefix"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_no_lines"
+          "name": "_decl_no_lines"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_no_lines"
+          "name": "_decl_no_lines"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_output"
+          "name": "_decl_output"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_pure_parser"
+          "name": "_decl_pure_parser"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_skeleton"
+          "name": "_decl_skeleton"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_token_table"
+          "name": "_decl_token_table"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_verbose"
+          "name": "_decl_verbose"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_yacc"
+          "name": "_decl_yacc"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_inial_action"
+          "name": "_decl_inial_action"
         },
         {
           "type": "SYMBOL",
-          "name": "decl_parse_param"
+          "name": "_decl_parse_param"
         }
       ]
     },
-    "decl_type": {
+    "_decl_type": {
       "type": "SEQ",
       "members": [
         {
@@ -495,7 +495,7 @@
         }
       ]
     },
-    "decl_require": {
+    "_decl_require": {
       "type": "SEQ",
       "members": [
         {
@@ -512,7 +512,7 @@
         }
       ]
     },
-    "decl_token": {
+    "_decl_token": {
       "type": "SEQ",
       "members": [
         {
@@ -621,7 +621,7 @@
         }
       ]
     },
-    "decl_nterm": {
+    "_decl_nterm": {
       "type": "SEQ",
       "members": [
         {
@@ -672,7 +672,7 @@
         }
       ]
     },
-    "decl_op_precedence": {
+    "_decl_op_precedence": {
       "type": "SEQ",
       "members": [
         {
@@ -801,7 +801,7 @@
         }
       ]
     },
-    "decl_initial_declaration": {
+    "_decl_initial_declaration": {
       "type": "SEQ",
       "members": [
         {
@@ -818,7 +818,7 @@
         }
       ]
     },
-    "decl_glr_parser": {
+    "_decl_glr_parser": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -826,7 +826,7 @@
         "value": "%glr-parser"
       }
     },
-    "decl_destructor": {
+    "_decl_destructor": {
       "type": "SEQ",
       "members": [
         {
@@ -884,7 +884,7 @@
         }
       ]
     },
-    "decl_printer": {
+    "_decl_printer": {
       "type": "SEQ",
       "members": [
         {
@@ -942,7 +942,7 @@
         }
       ]
     },
-    "decl_expect": {
+    "_decl_expect": {
       "type": "SEQ",
       "members": [
         {
@@ -980,7 +980,7 @@
         }
       ]
     },
-    "decl_start": {
+    "_decl_start": {
       "type": "SEQ",
       "members": [
         {
@@ -997,7 +997,7 @@
         }
       ]
     },
-    "decl_define": {
+    "_decl_define": {
       "type": "SEQ",
       "members": [
         {
@@ -1082,7 +1082,7 @@
         }
       ]
     },
-    "decl_code": {
+    "_decl_code": {
       "type": "SEQ",
       "members": [
         {
@@ -1132,7 +1132,7 @@
         }
       ]
     },
-    "decl_union": {
+    "_decl_union": {
       "type": "SEQ",
       "members": [
         {
@@ -1161,7 +1161,7 @@
         }
       ]
     },
-    "decl_debug": {
+    "_decl_debug": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1169,7 +1169,7 @@
         "value": "%debug"
       }
     },
-    "decl_header": {
+    "_decl_header": {
       "type": "SEQ",
       "members": [
         {
@@ -1194,7 +1194,7 @@
         }
       ]
     },
-    "decl_language": {
+    "_decl_language": {
       "type": "SEQ",
       "members": [
         {
@@ -1206,12 +1206,16 @@
           }
         },
         {
-          "type": "SYMBOL",
-          "name": "string_literal"
+          "type": "FIELD",
+          "name": "language",
+          "content": {
+            "type": "SYMBOL",
+            "name": "string_literal"
+          }
         }
       ]
     },
-    "decl_locations": {
+    "_decl_locations": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1219,7 +1223,7 @@
         "value": "%locations"
       }
     },
-    "decl_name_prefix": {
+    "_decl_name_prefix": {
       "type": "SEQ",
       "members": [
         {
@@ -1236,7 +1240,7 @@
         }
       ]
     },
-    "decl_no_lines": {
+    "_decl_no_lines": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1244,7 +1248,7 @@
         "value": "%no-lines"
       }
     },
-    "decl_output": {
+    "_decl_output": {
       "type": "SEQ",
       "members": [
         {
@@ -1261,7 +1265,7 @@
         }
       ]
     },
-    "decl_pure_parser": {
+    "_decl_pure_parser": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1269,7 +1273,7 @@
         "value": "%pure-parser"
       }
     },
-    "decl_skeleton": {
+    "_decl_skeleton": {
       "type": "SEQ",
       "members": [
         {
@@ -1286,7 +1290,7 @@
         }
       ]
     },
-    "decl_token_table": {
+    "_decl_token_table": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1294,7 +1298,7 @@
         "value": "%token-table"
       }
     },
-    "decl_verbose": {
+    "_decl_verbose": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1302,7 +1306,7 @@
         "value": "%verbose"
       }
     },
-    "decl_yacc": {
+    "_decl_yacc": {
       "type": "FIELD",
       "name": "name",
       "content": {
@@ -1310,7 +1314,7 @@
         "value": "%yacc"
       }
     },
-    "decl_inial_action": {
+    "_decl_inial_action": {
       "type": "SEQ",
       "members": [
         {
@@ -1327,7 +1331,7 @@
         }
       ]
     },
-    "decl_parse_param": {
+    "_decl_parse_param": {
       "type": "SEQ",
       "members": [
         {
