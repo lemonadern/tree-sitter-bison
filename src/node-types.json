@@ -73,7 +73,18 @@
   {
     "type": "decl_code",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%code",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -88,12 +99,34 @@
   {
     "type": "decl_debug",
     "named": true,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%debug",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "decl_define",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%define",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
@@ -108,7 +141,18 @@
   {
     "type": "decl_destructor",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%destructor",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -127,12 +171,58 @@
   {
     "type": "decl_expect",
     "named": true,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "%",
+            "named": false
+          },
+          {
+            "type": "expect",
+            "named": false
+          },
+          {
+            "type": "expect-rr",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "decl_glr_parser",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%glr-parser",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "decl_header",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%header",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": false,
@@ -147,7 +237,18 @@
   {
     "type": "decl_inial_action",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%initial-action",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -162,7 +263,18 @@
   {
     "type": "decl_initial_declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%initial-declaration",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -175,9 +287,36 @@
     }
   },
   {
+    "type": "decl_locations",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%locations",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "decl_name_prefix",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%name-prefix",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -190,9 +329,36 @@
     }
   },
   {
+    "type": "decl_no_lines",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%no-lines",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "decl_nterm",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%nterm",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -207,7 +373,34 @@
   {
     "type": "decl_op_precedence",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "%",
+            "named": false
+          },
+          {
+            "type": "left",
+            "named": false
+          },
+          {
+            "type": "nonassoc",
+            "named": false
+          },
+          {
+            "type": "precedence",
+            "named": false
+          },
+          {
+            "type": "right",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -230,7 +423,18 @@
   {
     "type": "decl_output",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%output",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -245,7 +449,18 @@
   {
     "type": "decl_parse_param",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%parse-param",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -260,7 +475,18 @@
   {
     "type": "decl_printer",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%printer",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -277,9 +503,36 @@
     }
   },
   {
+    "type": "decl_pure_parser",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%pure-parser",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "decl_require",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%require",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -294,7 +547,18 @@
   {
     "type": "decl_skeleton",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%skeleton",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -309,12 +573,34 @@
   {
     "type": "decl_start",
     "named": true,
-    "fields": {}
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%start",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "decl_token",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%token",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -339,9 +625,36 @@
     }
   },
   {
+    "type": "decl_token_table",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%token-table",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "decl_type",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%type",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -368,7 +681,18 @@
   {
     "type": "decl_union",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%union",
+            "named": false
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": false,
       "required": true,
@@ -378,6 +702,38 @@
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "decl_verbose",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%verbose",
+            "named": false
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "decl_yacc",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "%yacc",
+            "named": false
+          }
+        ]
+      }
     }
   },
   {
@@ -706,6 +1062,10 @@
     "named": false
   },
   {
+    "type": "%glr-parser",
+    "named": false
+  },
+  {
     "type": "%header",
     "named": false
   },
@@ -722,11 +1082,19 @@
     "named": false
   },
   {
+    "type": "%locations",
+    "named": false
+  },
+  {
     "type": "%merge",
     "named": false
   },
   {
     "type": "%name-prefix",
+    "named": false
+  },
+  {
+    "type": "%no-lines",
     "named": false
   },
   {
@@ -746,6 +1114,10 @@
     "named": false
   },
   {
+    "type": "%pure-parser",
+    "named": false
+  },
+  {
     "type": "%require",
     "named": false
   },
@@ -762,11 +1134,23 @@
     "named": false
   },
   {
+    "type": "%token-table",
+    "named": false
+  },
+  {
     "type": "%type",
     "named": false
   },
   {
     "type": "%union",
+    "named": false
+  },
+  {
+    "type": "%verbose",
+    "named": false
+  },
+  {
+    "type": "%yacc",
     "named": false
   },
   {
@@ -848,34 +1232,6 @@
   {
     "type": "_(",
     "named": false
-  },
-  {
-    "type": "decl_glr_parser",
-    "named": true
-  },
-  {
-    "type": "decl_locations",
-    "named": true
-  },
-  {
-    "type": "decl_no_lines",
-    "named": true
-  },
-  {
-    "type": "decl_pure_parser",
-    "named": true
-  },
-  {
-    "type": "decl_token_table",
-    "named": true
-  },
-  {
-    "type": "decl_verbose",
-    "named": true
-  },
-  {
-    "type": "decl_yacc",
-    "named": true
   },
   {
     "type": "directive_empty",
