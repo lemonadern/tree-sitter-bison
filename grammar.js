@@ -143,7 +143,7 @@ module.exports = grammar({
 				$._decl_parse_param),
 
 		_decl_type: $ =>
-			seq(declarationName('%type'),
+			seq(declarationName($, 'type'),
 				optional($.type_tag),
 				repeat1(
 					choice(
@@ -161,12 +161,12 @@ module.exports = grammar({
 
 		_decl_require: $ =>
 			seq(
-				declarationName('%require'),
+				declarationName($, 'require'),
 				$.string_literal),
 
 		_decl_token: $ =>
 			seq(
-				declarationName('%token'),
+				declarationName($, 'token'),
 				optional($.type_tag),
 				repeat1(
 					seq(
@@ -184,7 +184,7 @@ module.exports = grammar({
 
 		_decl_nterm: $ =>
 			seq(
-				declarationName('%nterm'),
+				declarationName($, 'nterm'),
 				optional($.type_tag),
 				repeat1(IDENTIFIER),
 				repeat(
@@ -194,8 +194,8 @@ module.exports = grammar({
 
 		_decl_op_precedence: $ =>
 			seq(
-				declarationName(
-					seq('%',
+				declarationName($,
+					seq(
 						choice(
 							'left',
 							'right',
@@ -222,15 +222,15 @@ module.exports = grammar({
 
 		_decl_initial_declaration: $ =>
 			seq(
-				declarationName('%initial-declaration'),
+				declarationName($, 'initial-declaration'),
 				$.code_block),
 
 		_decl_glr_parser: $ =>
-			declarationName('%glr-parser'),
+			declarationName($, 'glr-parser'),
 
 		_decl_destructor: $ =>
 			seq(
-				declarationName('%destructor'),
+				declarationName($, 'destructor'),
 				$.code_block,
 				repeat(
 					choice(
@@ -243,7 +243,7 @@ module.exports = grammar({
 
 		_decl_printer: $ =>
 			seq(
-				declarationName('%printer'),
+				declarationName($, 'printer'),
 				$.code_block,
 				repeat(
 					choice(
@@ -255,20 +255,20 @@ module.exports = grammar({
 
 		_decl_expect: $ =>
 			seq(
-				declarationName(
-					seq('%',
+				declarationName($,
+					seq(
 						choice(
 							'expect',
 							'expect-rr'))),
 				token(/[0-9]+/)),
 
 		_decl_start: $ =>
-			seq(declarationName('%start'),
+			seq(declarationName($, 'start'),
 				IDENTIFIER),
 
 		_decl_define: $ =>
 			seq(
-				declarationName('%define'),
+				declarationName($, 'define'),
 				seq(
 					IDENTIFIER,
 					repeat(
@@ -286,7 +286,7 @@ module.exports = grammar({
 						$.string_literal))),
 
 		_decl_code: $ =>
-			seq(declarationName('%code'),
+			seq(declarationName($, 'code'),
 				optional(
 					seq(
 						IDENTIFIER,
@@ -295,63 +295,63 @@ module.exports = grammar({
 			),
 
 		_decl_union: $ =>
-			seq(declarationName('%union'),
+			seq(declarationName($, 'union'),
 				optional(IDENTIFIER),
 				$.code_block),
 
 		_decl_debug: $ =>
-			declarationName('%debug'),
+			declarationName($, 'debug'),
 
 		_decl_header: $ =>
 			seq(
-				declarationName('%header'),
+				declarationName($, 'header'),
 				optional($.string_literal)),
 
 		_decl_language: $ =>
 			seq(
-				declarationName('%language'),
+				declarationName($, 'language'),
 				field('language', $.string_literal)),
 
 		_decl_locations: $ =>
-			declarationName('%locations'),
+			declarationName($, 'locations'),
 
 		_decl_name_prefix: $ =>
 			seq(
-				declarationName('%name-prefix'),
+				declarationName($, 'name-prefix'),
 				$.string_literal),
 
 		_decl_no_lines: $ =>
-			declarationName('%no-lines'),
+			declarationName($, 'no-lines'),
 
 		_decl_output: $ =>
 			seq(
-				declarationName('%output'),
+				declarationName($, 'output'),
 				$.string_literal),
 
 		_decl_pure_parser: $ =>
-			declarationName('%pure-parser'),
+			declarationName($, 'pure-parser'),
 
 		_decl_skeleton: $ =>
-			seq(declarationName('%skeleton'),
+			seq(declarationName($, 'skeleton'),
 				$.string_literal),
 
 		_decl_token_table: $ =>
-			declarationName('%token-table'),
+			declarationName($, 'token-table'),
 
 		_decl_verbose: $ =>
-			declarationName('%verbose'),
+			declarationName($, 'verbose'),
 
 		_decl_yacc: $ =>
-			declarationName('%yacc'),
+			declarationName($, 'yacc'),
 
 		_decl_inial_action: $ =>
 			seq(
-				declarationName('%initial-action'),
+				declarationName($, 'initial-action'),
 				$.code_block),
 
 		_decl_parse_param: $ =>
 			seq(
-				declarationName('%parse-param'),
+				declarationName($, 'parse-param'),
 				$.code_block),
 
 		directive: $ =>
@@ -458,6 +458,6 @@ module.exports = grammar({
 	}
 });
 
-function declarationName(rule) {
-	return field('name', rule);
+function declarationName($, rule) {
+	return alias(seq('%', token.immediate(rule)), $.declaration_name);
 }
