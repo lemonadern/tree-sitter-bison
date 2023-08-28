@@ -38,7 +38,8 @@ module.exports = grammar({
 		// closing bracket. It cannot be done here without reimplementing every supported
 		// language (C, C++, D, Java), and even then I don't think it would actually work.
 		// This is why it is implemented in the external scanner.
-		$.undelimited_code_block
+		$.undelimited_code_block,
+		$.error_sentinel
 	],
 
 	rules: {

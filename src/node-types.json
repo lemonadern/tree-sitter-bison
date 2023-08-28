@@ -73,145 +73,10 @@
   {
     "type": "declaration",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "%",
-            "named": false
-          },
-          {
-            "type": "%code",
-            "named": false
-          },
-          {
-            "type": "%debug",
-            "named": false
-          },
-          {
-            "type": "%define",
-            "named": false
-          },
-          {
-            "type": "%destructor",
-            "named": false
-          },
-          {
-            "type": "%glr-parser",
-            "named": false
-          },
-          {
-            "type": "%header",
-            "named": false
-          },
-          {
-            "type": "%initial-action",
-            "named": false
-          },
-          {
-            "type": "%initial-declaration",
-            "named": false
-          },
-          {
-            "type": "%locations",
-            "named": false
-          },
-          {
-            "type": "%name-prefix",
-            "named": false
-          },
-          {
-            "type": "%no-lines",
-            "named": false
-          },
-          {
-            "type": "%nterm",
-            "named": false
-          },
-          {
-            "type": "%output",
-            "named": false
-          },
-          {
-            "type": "%parse-param",
-            "named": false
-          },
-          {
-            "type": "%printer",
-            "named": false
-          },
-          {
-            "type": "%pure-parser",
-            "named": false
-          },
-          {
-            "type": "%require",
-            "named": false
-          },
-          {
-            "type": "%skeleton",
-            "named": false
-          },
-          {
-            "type": "%start",
-            "named": false
-          },
-          {
-            "type": "%token",
-            "named": false
-          },
-          {
-            "type": "%token-table",
-            "named": false
-          },
-          {
-            "type": "%type",
-            "named": false
-          },
-          {
-            "type": "%union",
-            "named": false
-          },
-          {
-            "type": "%verbose",
-            "named": false
-          },
-          {
-            "type": "%yacc",
-            "named": false
-          },
-          {
-            "type": "expect",
-            "named": false
-          },
-          {
-            "type": "expect-rr",
-            "named": false
-          },
-          {
-            "type": "left",
-            "named": false
-          },
-          {
-            "type": "nonassoc",
-            "named": false
-          },
-          {
-            "type": "precedence",
-            "named": false
-          },
-          {
-            "type": "right",
-            "named": false
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "char_quoted",
@@ -219,6 +84,10 @@
         },
         {
           "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "declaration_name",
           "named": true
         },
         {
@@ -427,119 +296,11 @@
     "named": false
   },
   {
-    "type": "%",
-    "named": false
-  },
-  {
     "type": "%%",
     "named": false
   },
   {
-    "type": "%code",
-    "named": false
-  },
-  {
-    "type": "%debug",
-    "named": false
-  },
-  {
-    "type": "%define",
-    "named": false
-  },
-  {
-    "type": "%destructor",
-    "named": false
-  },
-  {
-    "type": "%glr-parser",
-    "named": false
-  },
-  {
-    "type": "%header",
-    "named": false
-  },
-  {
-    "type": "%initial-action",
-    "named": false
-  },
-  {
-    "type": "%initial-declaration",
-    "named": false
-  },
-  {
-    "type": "%language",
-    "named": false
-  },
-  {
-    "type": "%locations",
-    "named": false
-  },
-  {
     "type": "%merge",
-    "named": false
-  },
-  {
-    "type": "%name-prefix",
-    "named": false
-  },
-  {
-    "type": "%no-lines",
-    "named": false
-  },
-  {
-    "type": "%nterm",
-    "named": false
-  },
-  {
-    "type": "%output",
-    "named": false
-  },
-  {
-    "type": "%parse-param",
-    "named": false
-  },
-  {
-    "type": "%printer",
-    "named": false
-  },
-  {
-    "type": "%pure-parser",
-    "named": false
-  },
-  {
-    "type": "%require",
-    "named": false
-  },
-  {
-    "type": "%skeleton",
-    "named": false
-  },
-  {
-    "type": "%start",
-    "named": false
-  },
-  {
-    "type": "%token",
-    "named": false
-  },
-  {
-    "type": "%token-table",
-    "named": false
-  },
-  {
-    "type": "%type",
-    "named": false
-  },
-  {
-    "type": "%union",
-    "named": false
-  },
-  {
-    "type": "%verbose",
-    "named": false
-  },
-  {
-    "type": "%yacc",
     "named": false
   },
   {
@@ -623,24 +384,12 @@
     "named": false
   },
   {
-    "type": "directive_empty",
+    "type": "declaration_name",
     "named": true
   },
   {
-    "type": "expect",
-    "named": false
-  },
-  {
-    "type": "expect-rr",
-    "named": false
-  },
-  {
-    "type": "left",
-    "named": false
-  },
-  {
-    "type": "nonassoc",
-    "named": false
+    "type": "directive_empty",
+    "named": true
   },
   {
     "type": "number_literal",
@@ -648,14 +397,6 @@
   },
   {
     "type": "opt",
-    "named": false
-  },
-  {
-    "type": "precedence",
-    "named": false
-  },
-  {
-    "type": "right",
     "named": false
   },
   {
