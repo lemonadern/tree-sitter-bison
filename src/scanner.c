@@ -1,10 +1,12 @@
+#include <stdbool.h>
 #include <stdint.h>
 #include <tree_sitter/parser.h>
 #include <stdio.h>
 #include <signal.h>
 
 enum TokenType {
-  UNDELIMITED_CODE_BLOCK
+  UNDELIMITED_CODE_BLOCK,
+  ERROR_SENTINEL
 };
 
 void *tree_sitter_bison_external_scanner_create() {
@@ -39,13 +41,13 @@ void tree_sitter_bison_external_scanner_deserialize(
    When calling, the lookahead must be a quote, and when it ends the lookahead will be
    the caracter just after the closing quote.
  */
-void eat_entire_string(TSLexer* lexer) {
+void eat_entire_string(TSLexer* lexer, int32_t quote_symbol) {
   lexer->advance(lexer, false);
 
   bool backslash_active = false;
 
   while (!lexer->eof(lexer)) {
-	if (!backslash_active && lexer->lookahead == '\"') {
+	if (!backslash_active && lexer->lookahead == quote_symbol) {
 	  lexer->advance(lexer, false);
 	  break;
 	}
@@ -59,10 +61,37 @@ void eat_entire_string(TSLexer* lexer) {
 }
 
 
+void error_recovery(TSLexer* lexer) {
+  while (!lexer->eof(lexer)) {
+	switch (lexer->lookahead) {
+	case '\"':
+	  eat_entire_string(lexer, '\"');
+	  continue;
+	case '\'':
+	  eat_entire_string(lexer, '\'');
+	  continue;
+	case '%':
+	case ';':
+	  lexer->mark_end(lexer);
+	  return;
+	}
+	lexer->advance(lexer, false);
+  }
+  lexer->mark_end(lexer);
+}
+
+
 bool tree_sitter_bison_external_scanner_scan(
   void *payload,
   TSLexer *lexer,
   const bool *valid_symbols) {
+
+
+  if (valid_symbols[ERROR_SENTINEL]) {
+	error_recovery(lexer);
+	lexer->result_symbol = ERROR_SENTINEL;
+	return true;
+  }
 
   int scope_level = 0;
   uint32_t previous_char = 0;
@@ -73,7 +102,11 @@ bool tree_sitter_bison_external_scanner_scan(
 
 	switch (lexer->lookahead) {
 	case '\"':
-	  eat_entire_string(lexer);
+	  eat_entire_string(lexer, '\"');
+	  continue;
+	  break;
+	case '\'':
+	  eat_entire_string(lexer, '\'');
 	  continue;
 	  break;
 	case '{':
