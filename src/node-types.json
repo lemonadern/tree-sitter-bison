@@ -15,7 +15,7 @@
     }
   },
   {
-    "type": "char_quoted",
+    "type": "char_literal",
     "named": true,
     "fields": {}
   },
@@ -52,11 +52,11 @@
           "named": true
         },
         {
-          "type": "char_quoted",
+          "type": "char_literal",
           "named": true
         },
         {
-          "type": "directive_merge",
+          "type": "directive",
           "named": true
         },
         {
@@ -79,7 +79,7 @@
       "required": true,
       "types": [
         {
-          "type": "char_quoted",
+          "type": "char_literal",
           "named": true
         },
         {
@@ -114,12 +114,12 @@
     }
   },
   {
-    "type": "directive_merge",
+    "type": "directive",
     "named": true,
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "type",
@@ -145,7 +145,7 @@
           "named": true
         },
         {
-          "type": "directive_empty",
+          "type": "directive",
           "named": true
         },
         {
@@ -385,10 +385,6 @@
   },
   {
     "type": "declaration_name",
-    "named": true
-  },
-  {
-    "type": "directive_empty",
     "named": true
   },
   {

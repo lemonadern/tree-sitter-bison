@@ -86,14 +86,14 @@ module.exports = grammar({
 				seq(
 					choice(
 						seq(optional($.action),
-							$.directive_empty,
+							alias($.directive_empty, $.directive),
 							optional($.action)),
 						repeat1($.component)),
 					repeat(
 						seq(
 							'|',
 							choice(
-								$.directive_empty,
+								alias($.directive_empty, $.directive),
 								repeat1($.component))))),
 				';'),
 
@@ -102,10 +102,10 @@ module.exports = grammar({
 				seq(
 					$.grammar_rule_identifier,
 					optional(seq('[', IDENTIFIER, ']'))),
-				$.char_quoted,
+				$.char_literal,
 				$.string_literal,
 				$.action,
-				$.directive_merge),
+				alias($.directive_merge, $.directive)),
 
 		action: $ =>
 			seq(
@@ -149,7 +149,7 @@ module.exports = grammar({
 				repeat1(
 					choice(
 						$.grammar_rule_identifier,
-						$.char_quoted,
+						$.char_literal,
 						$.string_literal)
 				),
 				repeat(
@@ -157,7 +157,7 @@ module.exports = grammar({
 						repeat1(
 							choice(
 								$.grammar_rule_identifier,
-								$.char_quoted,
+								$.char_literal,
 								$.string_literal))))),
 
 		_decl_require: $ =>
@@ -171,7 +171,7 @@ module.exports = grammar({
 				optional($.type_tag),
 				repeat1(
 					seq(
-						IDENTIFIER,
+						$.grammar_rule_identifier,
 						optional($.number_literal),
 						optional($.string))),
 				repeat(
@@ -179,7 +179,7 @@ module.exports = grammar({
 						$.type_tag,
 						repeat1(
 							seq(
-								IDENTIFIER,
+								$.grammar_rule_identifier,
 								optional($.number_literal),
 								optional($.string_literal)))))),
 
@@ -187,28 +187,28 @@ module.exports = grammar({
 			seq(
 				declarationName($, 'nterm'),
 				optional($.type_tag),
-				repeat1(IDENTIFIER),
+				repeat1($.grammar_rule_identifier),
 				repeat(
 					seq(
 						$.type_tag,
-						repeat(IDENTIFIER)))),
+						repeat($.grammar_rule_identifier)))),
 
 		_decl_op_precedence: $ =>
 			seq(
 				declarationName($,
-					seq(
-						choice(
-							'left',
-							'right',
-							'nonassoc',
-							'precedence'
-						))),
+					choice(
+						'left',
+						'right',
+						'nonassoc',
+						'precedence'
+					)),
 				optional($.type_tag),
 				repeat1(
 					seq(
 						choice(
-							IDENTIFIER,
-							$.char_quoted),
+							$.grammar_rule_identifier,
+							$.string_literal,
+							$.char_literal),
 						optional($.number_literal))
 				),
 				repeat(
@@ -217,8 +217,9 @@ module.exports = grammar({
 						repeat1(
 							seq(
 								choice(
-									IDENTIFIER,
-									$.char_quoted),
+									$.grammar_rule_identifier,
+									$.string_literal,
+									$.char_literal),
 								optional($.number_literal)))))),
 
 		_decl_initial_declaration: $ =>
@@ -240,7 +241,7 @@ module.exports = grammar({
 							'<',
 							optional('*'),
 							'>'),
-						IDENTIFIER))),
+						$.grammar_rule_identifier))),
 
 		_decl_printer: $ =>
 			seq(
@@ -252,20 +253,19 @@ module.exports = grammar({
 						seq('<',
 							optional('*'),
 							'>'),
-						IDENTIFIER))),
+						$.grammar_rule_identifier))),
 
 		_decl_expect: $ =>
 			seq(
 				declarationName($,
-					seq(
-						choice(
-							'expect',
-							'expect-rr'))),
+					choice(
+						'expect',
+						'expect-rr')),
 				token(/[0-9]+/)),
 
 		_decl_start: $ =>
 			seq(declarationName($, 'start'),
-				IDENTIFIER),
+				$.grammar_rule_identifier),
 
 		_decl_define: $ =>
 			seq(
@@ -355,11 +355,6 @@ module.exports = grammar({
 				declarationName($, 'parse-param'),
 				$.code_block),
 
-		directive: $ =>
-			choice(
-				$.directive_merge,
-				$.directive_empty),
-
 		directive_merge: $ =>
 			seq(
 				'%merge',
@@ -443,7 +438,7 @@ module.exports = grammar({
 				$.undelimited_code_block,
 				'}'),
 
-		char_quoted: $ =>
+		char_literal: $ =>
 			seq(
 				'\'',
 				CHAR,
