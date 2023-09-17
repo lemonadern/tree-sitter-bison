@@ -146,8 +146,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "grammar_rule_identifier"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "grammar_rule_identifier"
+          },
+          "named": true,
+          "value": "grammar_rule_declaration"
         },
         {
           "type": "STRING",
@@ -201,7 +206,7 @@
                   "type": "REPEAT1",
                   "content": {
                     "type": "SYMBOL",
-                    "name": "component"
+                    "name": "_component"
                   }
                 }
               ]
@@ -231,7 +236,7 @@
                         "type": "REPEAT1",
                         "content": {
                           "type": "SYMBOL",
-                          "name": "component"
+                          "name": "_component"
                         }
                       }
                     ]
@@ -247,7 +252,7 @@
         }
       ]
     },
-    "component": {
+    "_component": {
       "type": "CHOICE",
       "members": [
         {
@@ -425,7 +430,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_decl_inial_action"
+          "name": "_decl_initial_action"
         },
         {
           "type": "SYMBOL",
@@ -1657,7 +1662,7 @@
       "named": true,
       "value": "declaration_name"
     },
-    "_decl_inial_action": {
+    "_decl_initial_action": {
       "type": "SEQ",
       "members": [
         {

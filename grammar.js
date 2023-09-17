@@ -81,23 +81,23 @@ module.exports = grammar({
 
 		grammar_rule: $ =>
 			seq(
-				$.grammar_rule_identifier,
+				alias($.grammar_rule_identifier, $.grammar_rule_declaration),
 				':',
 				seq(
 					choice(
 						seq(optional($.action),
 							alias($.directive_empty, $.directive),
 							optional($.action)),
-						repeat1($.component)),
+						repeat1($._component)),
 					repeat(
 						seq(
 							'|',
 							choice(
 								alias($.directive_empty, $.directive),
-								repeat1($.component))))),
+								repeat1($._component))))),
 				';'),
 
-		component: $ =>
+		_component: $ =>
 			choice(
 				seq(
 					$.grammar_rule_identifier,
@@ -140,7 +140,7 @@ module.exports = grammar({
 				$._decl_token_table,
 				$._decl_verbose,
 				$._decl_yacc,
-				$._decl_inial_action,
+				$._decl_initial_action,
 				$._decl_parse_param),
 
 		_decl_type: $ =>
@@ -345,7 +345,7 @@ module.exports = grammar({
 		_decl_yacc: $ =>
 			declarationName($, 'yacc'),
 
-		_decl_inial_action: $ =>
+		_decl_initial_action: $ =>
 			seq(
 				declarationName($, 'initial-action'),
 				$.code_block),
