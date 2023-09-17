@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <signal.h>
 
+
 enum TokenType {
   UNDELIMITED_CODE_BLOCK,
   ERROR_SENTINEL
@@ -60,6 +61,47 @@ void eat_entire_string(TSLexer* lexer, int32_t quote_symbol) {
   }
 }
 
+void eat_entire_multiline_comment(TSLexer* lexer) {
+
+  int32_t previous_char = 0;
+  lexer->advance(lexer, false);
+
+  while (!lexer->eof(lexer)) {
+	if (previous_char == '*' && lexer->lookahead == '/') {
+	  lexer->advance(lexer, false);
+	  break;
+	}
+	previous_char = lexer->lookahead;
+	lexer->advance(lexer, false);
+  }
+}
+
+void eat_entire_simple_comment(TSLexer* lexer) {
+
+  lexer->advance(lexer, false);
+
+  while (!lexer->eof(lexer)) {
+	if (lexer->lookahead == '\n') {
+	  lexer->advance(lexer, false);
+	  break;
+	}
+	lexer->advance(lexer, false);
+  }
+}
+
+void eat_entire_comment(TSLexer* lexer) {
+  if (!lexer->eof(lexer)) {
+	lexer->advance(lexer, false);
+	if (lexer->lookahead == '*') {
+	  eat_entire_multiline_comment(lexer);
+	}
+	else {
+	  if (lexer->lookahead == '/') {
+		eat_entire_simple_comment(lexer);
+	  }
+	}
+  }
+}
 
 void error_recovery(TSLexer* lexer) {
   while (!lexer->eof(lexer)) {
@@ -80,12 +122,12 @@ void error_recovery(TSLexer* lexer) {
   lexer->mark_end(lexer);
 }
 
-
 bool tree_sitter_bison_external_scanner_scan(
   void *payload,
   TSLexer *lexer,
   const bool *valid_symbols) {
 
+  (void) payload;
 
   if (valid_symbols[ERROR_SENTINEL]) {
 	error_recovery(lexer);
@@ -108,6 +150,9 @@ bool tree_sitter_bison_external_scanner_scan(
 	case '\'':
 	  eat_entire_string(lexer, '\'');
 	  continue;
+	  break;
+	case '/':
+	  eat_entire_comment(lexer);
 	  break;
 	case '{':
 	  scope_level++;
