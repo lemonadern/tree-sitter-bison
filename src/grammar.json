@@ -54,8 +54,13 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "SYMBOL",
-              "name": "prologue_body"
+              "type": "ALIAS",
+              "content": {
+                "type": "SYMBOL",
+                "name": "prologue_body"
+              },
+              "named": true,
+              "value": "embedded_code"
             },
             {
               "type": "BLANK"
@@ -105,8 +110,13 @@
                   "value": "%%"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "undelimited_code_block"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "undelimited_code_block"
+                  },
+                  "named": true,
+                  "value": "embedded_code"
                 }
               ]
             },
@@ -2266,8 +2276,13 @@
           "value": "{"
         },
         {
-          "type": "SYMBOL",
-          "name": "undelimited_code_block"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "undelimited_code_block"
+          },
+          "named": true,
+          "value": "embedded_code"
         },
         {
           "type": "STRING",

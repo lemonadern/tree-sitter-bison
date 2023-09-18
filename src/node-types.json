@@ -28,7 +28,7 @@
       "required": true,
       "types": [
         {
-          "type": "undelimited_code_block",
+          "type": "embedded_code",
           "named": true
         }
       ]
@@ -96,6 +96,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "embedded_code",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "grammar_rule",
@@ -170,11 +175,11 @@
       "required": true,
       "types": [
         {
-          "type": "grammar_rules_body",
+          "type": "embedded_code",
           "named": true
         },
         {
-          "type": "undelimited_code_block",
+          "type": "grammar_rules_body",
           "named": true
         }
       ]
@@ -189,16 +194,11 @@
       "required": false,
       "types": [
         {
-          "type": "prologue_body",
+          "type": "embedded_code",
           "named": true
         }
       ]
     }
-  },
-  {
-    "type": "prologue_body",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "sections",
@@ -388,10 +388,6 @@
   {
     "type": "u8\"",
     "named": false
-  },
-  {
-    "type": "undelimited_code_block",
-    "named": true
   },
   {
     "type": "{",

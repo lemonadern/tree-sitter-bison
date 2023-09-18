@@ -56,7 +56,7 @@ module.exports = grammar({
 		prologue: $ =>
 			seq (
 				'%{',
-				optional($.prologue_body),
+				optional(alias($.prologue_body, $.embedded_code)),
 				'%}'),
 
 		prologue_body: $ =>
@@ -71,7 +71,7 @@ module.exports = grammar({
 				$.grammar_rules_body,
 				optional(
 					seq('%%',
-						$.undelimited_code_block))),
+						alias($.undelimited_code_block, $.embedded_code)))),
 
 		grammar_rules_body: $ =>
 			repeat1(
@@ -435,7 +435,7 @@ module.exports = grammar({
 
 		code_block: $ =>
 			seq('{',
-				$.undelimited_code_block,
+				alias($.undelimited_code_block, $.embedded_code),
 				'}'),
 
 		char_literal: $ =>
