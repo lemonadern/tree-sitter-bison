@@ -42,7 +42,18 @@
   {
     "type": "declaration",
     "named": true,
-    "fields": {},
+    "fields": {
+      "language": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -326,10 +337,6 @@
     "named": false
   },
   {
-    "type": "1",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
@@ -372,10 +379,6 @@
   {
     "type": "number_literal",
     "named": true
-  },
-  {
-    "type": "opt",
-    "named": false
   },
   {
     "type": "string_content",

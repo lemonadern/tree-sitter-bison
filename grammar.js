@@ -100,12 +100,15 @@ module.exports = grammar({
 		_component: $ =>
 			choice(
 				seq(
-					$.grammar_rule_identifier,
+					choice(
+						$.char_literal,
+						$.string_literal,
+						$.grammar_rule_identifier,
+					),
 					optional(seq('[', IDENTIFIER, ']'))),
-				$.char_literal,
-				$.string_literal,
+				alias($.directive_merge, $.directive),
 				$.action,
-				alias($.directive_merge, $.directive)),
+			),
 
 		action: $ =>
 			seq(
@@ -130,6 +133,7 @@ module.exports = grammar({
 				$._decl_union,
 				$._decl_debug,
 				$._decl_header,
+				$._decl_language,
 				$._decl_locations,
 				$._decl_name_prefix,
 				$._decl_no_lines,
@@ -426,12 +430,13 @@ module.exports = grammar({
 		grammar_rule_identifier: $ =>
 			seq(
 				IDENTIFIER,
-				optional(
-					seq('.',
-						choice(
-							'opt',
-							// TODO: find the actual rule for suffixes
-							'1')))),
+				token.immediate(
+					optional(
+						seq(token.immediate('.'),
+							choice(
+								token.immediate('opt'),
+								// TODO: find the actual rule for suffixes
+								token.immediate('1')))))),
 
 		code_block: $ =>
 			seq('{',
