@@ -1,6 +1,2 @@
-((prologue
-  (prologue_body) @injection.content)
- (#set! injection.language))
-((prologue
-  (grammar_rules_body) @injection.content)
+((embedded_code) @injection.content
  (#set! injection.language))
