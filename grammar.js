@@ -71,7 +71,7 @@ module.exports = grammar({
 				$.grammar_rules_body,
 				optional(
 					seq('%%',
-						alias($.undelimited_code_block, $.embedded_code)))),
+						$.epilogue))),
 
 		grammar_rules_body: $ =>
 			repeat1(
@@ -133,7 +133,7 @@ module.exports = grammar({
 				$._decl_union,
 				$._decl_debug,
 				$._decl_header,
-				$._decl_language,
+				$.decl_language,
 				$._decl_locations,
 				$._decl_name_prefix,
 				$._decl_no_lines,
@@ -312,7 +312,7 @@ module.exports = grammar({
 				declarationName($, 'header'),
 				optional($.string_literal)),
 
-		_decl_language: $ =>
+		decl_language: $ =>
 			seq(
 				declarationName($, 'language'),
 				field('language', $.string_literal)),
@@ -368,6 +368,9 @@ module.exports = grammar({
 
 		directive_empty: $ =>
 			token('%empty'),
+
+		epilogue: $ =>
+			alias($.undelimited_code_block, $.embedded_code),
 
 		string: $ =>
 			choice(

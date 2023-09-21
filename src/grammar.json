@@ -110,13 +110,8 @@
                   "value": "%%"
                 },
                 {
-                  "type": "ALIAS",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "undelimited_code_block"
-                  },
-                  "named": true,
-                  "value": "embedded_code"
+                  "type": "SYMBOL",
+                  "name": "epilogue"
                 }
               ]
             },
@@ -405,7 +400,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_decl_language"
+          "name": "decl_language"
         },
         {
           "type": "SYMBOL",
@@ -1431,7 +1426,7 @@
         }
       ]
     },
-    "_decl_language": {
+    "decl_language": {
       "type": "SEQ",
       "members": [
         {
@@ -1768,6 +1763,15 @@
         "type": "STRING",
         "value": "%empty"
       }
+    },
+    "epilogue": {
+      "type": "ALIAS",
+      "content": {
+        "type": "SYMBOL",
+        "name": "undelimited_code_block"
+      },
+      "named": true,
+      "value": "embedded_code"
     },
     "string": {
       "type": "CHOICE",

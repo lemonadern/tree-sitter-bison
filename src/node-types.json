@@ -40,12 +40,12 @@
     "fields": {}
   },
   {
-    "type": "declaration",
+    "type": "decl_language",
     "named": true,
     "fields": {
       "language": {
         "multiple": false,
-        "required": false,
+        "required": true,
         "types": [
           {
             "type": "string_literal",
@@ -59,11 +59,30 @@
       "required": true,
       "types": [
         {
+          "type": "declaration_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declaration",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
           "type": "char_literal",
           "named": true
         },
         {
           "type": "code_block",
+          "named": true
+        },
+        {
+          "type": "decl_language",
           "named": true
         },
         {
@@ -112,6 +131,21 @@
     "type": "embedded_code",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "epilogue",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "embedded_code",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "grammar_rule",
@@ -186,7 +220,7 @@
       "required": true,
       "types": [
         {
-          "type": "embedded_code",
+          "type": "epilogue",
           "named": true
         },
         {
