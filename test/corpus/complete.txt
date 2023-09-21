@@ -1,0 +1,342 @@
+==================
+Complete example
+==================
+
+/*                                                       -*-  -*-
+  Copyright (C) 2020-2022 Free Software Foundation, Inc.
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
+/* Simplified C++ Type and Expression Grammar.
+   Written by Paul Hilfinger for Bison's test suite.  */
+
+%define api.pure
+%header
+%define api.header.include {"c++-types.h"}
+%locations
+%debug
+
+
+%{
+    #define _GNU_SOURCE
+    #include <stdio.h>
+    #include "ptypes.h"
+    std::map();
+    class a {};
+%}
+
+
+%union {
+  long n;
+  tree t;  /* tree is defined in ptypes.h. */
+}
+
+
+%{
+  static void print_token (yytoken_kind_t token, YYSTYPE val);
+%}
+
+
+/* Nice error messages with details. */
+%define parse.error detailed
+
+%code requires
+{
+  union node {
+    struct {
+      int is_nterm;
+      int parents;
+    } node_info;
+    struct {
+      int is_nterm; /* 1 */
+      int parents;
+      char const *form;
+      union node *children[3];
+    } nterm;
+    struct {
+      int is_nterm; /* 0 */
+      int parents;
+      char *text;
+    } term;
+  };
+  typedef union node node_t;
+}
+
+%define api.value.type union
+
+%code
+{
+  /* Portability issues for strdup. */
+#ifndef _XOPEN_SOURCE
+# define _XOPEN_SOURCE 600
+#endif
+
+#include <assert.h>
+#include <ctype.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+  static node_t *new_nterm (char const *, node_t *, node_t *, node_t *);
+  static node_t *new_term (char *);
+  static void free_node (node_t *);
+  static char *node_to_string (const node_t *);
+  static void node_print (FILE *, const node_t *);
+  static node_t *stmt_merge (YYSTYPE x0, YYSTYPE x1);
+
+  static void yyerror (YYLTYPE const * const loc, const char *msg);
+  static yytoken_kind_t yylex (YYSTYPE *lval, YYLTYPE *lloc);
+}
+
+%expect-rr 1
+
+%token
+  TYPENAME "typename"
+  ID "identifier"
+
+%right '='
+%left '+'
+
+%glr-parser
+
+%type <node_t *> stmt expr decl declarator TYPENAME ID
+%destructor { free_node ($$); } <node_t *>
+%printer { node_print (yyo, $$); } <node_t *>
+
+%%
+
+  prog : %empty
+    | prog stmt
+			{
+                     YYLOCATION_PRINT (stdout, &@2);
+                     fputs (": ", stdout);
+                     node_print (stdout, $2);
+                     putc ('\n', stdout);
+                     fflush (stdout);
+                     free_node ($2);
+                   }
+     ;
+
+  stmt : expr ';'  %merge <stmt_merge>     { $$ = $1; }
+     | decl      %merge <stmt_merge>
+     | error ';'        { $$ = new_nterm ("<error>", NULL, NULL, NULL); }
+     ;
+
+expr : ID
+    |
+      TYPENAME '(' expr ')'
+			{ $$ = new_nterm ("<cast>(%s, %s)", $3, $1, NULL); }
+    | expr '+' expr    { $$ = new_nterm ("+(%s, %s)", $1, $3, NULL); }
+    | expr '=' expr    { $$ = new_nterm ("=(%s, %s)", $1, $3, NULL); }
+    ;
+
+decl : TYPENAME declarator ';'
+			{ $$ = new_nterm ("<declare>(%s, %s)", $1, $2, NULL); }
+    | TYPENAME declarator '=' expr ';'
+                        { $$ = new_nterm ("<init-declare>(%s, %s, %s)", $1,
+                                          $2, $4); }
+    ;
+
+declarator
+     : ID
+     | '(' declarator ')' { $$ = $2; }
+     ;
+
+%%
+
+/* A C error reporting function.  */
+static void
+yyerror (YYLTYPE const * const loc, const char *msg)
+{
+  YYLOCATION_PRINT (stderr, loc);
+  fprintf (stderr, ": %s\n", msg);
+}
+
+
+---
+
+(sections
+  (comment)
+  (comment)
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (string_literal
+      (string_content)))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (prologue
+    (embedded_code))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (code_block
+      (embedded_code)))
+  (prologue
+    (embedded_code))
+  (comment)
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (code_block
+      (embedded_code)))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (code_block
+      (embedded_code)))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (grammar_rule_identifier)
+    (string
+      (string_literal
+        (string_content)))
+    (grammar_rule_identifier)
+    (string
+      (string_literal
+        (string_content))))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (char_literal))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (char_literal))
+  (declaration
+    (declaration_name)
+    (declaration_name))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (type_tag
+      (type))
+    (grammar_rule_identifier)
+    (grammar_rule_identifier)
+    (grammar_rule_identifier)
+    (grammar_rule_identifier)
+    (grammar_rule_identifier)
+    (grammar_rule_identifier))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (code_block
+      (embedded_code))
+    (type_tag
+      (type)))
+  (declaration
+    (declaration_name)
+    (declaration_name)
+    (code_block
+      (embedded_code))
+    (type_tag
+      (type)))
+  (grammar_rules_section
+    (grammar_rules_body
+      (grammar_rule
+        (grammar_rule_declaration)
+        (directive)
+        (grammar_rule_identifier)
+        (grammar_rule_identifier)
+        (action
+          (code_block
+            (embedded_code))))
+      (grammar_rule
+        (grammar_rule_declaration)
+        (grammar_rule_identifier)
+        (char_literal)
+        (directive
+          (type))
+        (action
+          (code_block
+            (embedded_code)))
+        (grammar_rule_identifier)
+        (directive
+          (type))
+        (grammar_rule_identifier)
+        (char_literal)
+        (action
+          (code_block
+            (embedded_code))))
+      (grammar_rule
+        (grammar_rule_declaration)
+        (grammar_rule_identifier)
+        (grammar_rule_identifier)
+        (char_literal)
+        (grammar_rule_identifier)
+        (char_literal)
+        (action
+          (code_block
+            (embedded_code)))
+        (grammar_rule_identifier)
+        (char_literal)
+        (grammar_rule_identifier)
+        (action
+          (code_block
+            (embedded_code)))
+        (grammar_rule_identifier)
+        (char_literal)
+        (grammar_rule_identifier)
+        (action
+          (code_block
+            (embedded_code))))
+      (grammar_rule
+        (grammar_rule_declaration)
+        (grammar_rule_identifier)
+        (grammar_rule_identifier)
+        (char_literal)
+        (action
+          (code_block
+            (embedded_code)))
+        (grammar_rule_identifier)
+        (grammar_rule_identifier)
+        (char_literal)
+        (grammar_rule_identifier)
+        (char_literal)
+        (action
+          (code_block
+            (embedded_code))))
+      (grammar_rule
+        (grammar_rule_declaration)
+        (grammar_rule_identifier)
+        (char_literal)
+        (grammar_rule_identifier)
+        (char_literal)
+        (action
+          (code_block
+            (embedded_code)))))
+    (epilogue
+      (embedded_code))))
