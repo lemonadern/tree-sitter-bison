@@ -1,3 +1,25 @@
 Bison grammar for [[https://github.com/tree-sitter/tree-sitter][tree-sitter]]. Created from the official documentation and from examples.
 
-*Work in progress*
+It also supports embedded languages in grammar files (C, C++, D and Java).
+
+* Known limitations
+This parser requires a semicolon between different grammar rules. While not in official documentation (as far as I kwow), it seems to be possible in practice to omit these semicolons.
+
+For instance, while theorically valid, this parser cannot parse this:
+
+#+BEGIN_SRC
+first_rule: token1 token1
+
+second_rule: token3 token4
+#+END_SRC
+
+Attemps to support this caused ambiguity in the parser.
+If you want to use this parser, you will need to add semicolons, like this:
+
+#+BEGIN_SRC
+first_rule: token1 token1
+;
+
+second_rule: token3 token4
+;
+#+END_SRC
