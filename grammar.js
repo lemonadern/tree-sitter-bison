@@ -145,7 +145,9 @@ module.exports = grammar({
 				$._decl_verbose,
 				$._decl_yacc,
 				$._decl_initial_action,
-				$._decl_parse_param),
+				$._decl_parse_param,
+				$._decl_param,
+				$._decl_lex_param),
 
 		_decl_type: $ =>
 			seq(declarationName($, 'type'),
@@ -359,6 +361,16 @@ module.exports = grammar({
 				declarationName($, 'parse-param'),
 				$.code_block),
 
+		_decl_param: $ =>
+			seq(
+				declarationName($, 'param'),
+				$.code_block),
+
+		_decl_lex_param: $ =>
+			seq(
+				declarationName($, 'lex-param'),
+				$.code_block),
+
 		directive_merge: $ =>
 			seq(
 				'%merge',
@@ -425,9 +437,18 @@ module.exports = grammar({
 
 		type: $ =>
 			seq(
+				$._type_atom,
+				optional(
+					seq('<',
+						$.type,
+						'>'))),
+
+		_type_atom: $ =>
+			seq(
 				IDENTIFIER,
 				repeat(
-					IDENTIFIER),
+					seq(optional('::'),
+						IDENTIFIER)),
 				optional('*')),
 
 		grammar_rule_identifier: $ =>
