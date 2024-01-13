@@ -84,11 +84,12 @@ module.exports = grammar({
 				alias($.grammar_rule_identifier, $.grammar_rule_declaration),
 				':',
 				seq(
-					choice(
-						seq(optional($.action),
-							alias($.directive_empty, $.directive),
-							optional($.action)),
-						repeat1($._component)),
+					optional(
+						choice(
+							seq(optional($.action),
+								alias($.directive_empty, $.directive),
+								optional($.action)),
+							repeat1($._component))),
 					repeat(
 						seq(
 							'|',
@@ -470,6 +471,7 @@ module.exports = grammar({
 		char_literal: $ =>
 			seq(
 				'\'',
+				optional('\\'),
 				CHAR,
 				'\''),
 
