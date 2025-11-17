@@ -19,6 +19,9 @@ include = [
   "src/*",
   "tree-sitter.json",
   "/LICENSE",
+  "/README.md",
+  "/COPYING.GPL3",
+  "/COPYING.LGPL3",
 ]
 
 [lib]

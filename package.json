@@ -23,7 +23,11 @@
     "bindings/node/*",
     "queries/*",
     "src/**",
-    "*.wasm"
+    "*.wasm",
+    "README.md",
+    "LICENSE",
+    "COPYING.GPL3",
+    "COPYING.LGPL3"
   ],
   "dependencies": {
     "node-addon-api": "^8.5.0",

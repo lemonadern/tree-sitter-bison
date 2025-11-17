@@ -73,5 +73,11 @@ setup(
         "bdist_wheel": BdistWheel,
         "egg_info": EggInfo,
     },
+    license_files=[
+        "LICENSE",
+        "COPYING.GPL3",
+        "COPYING.LGPL3",
+        "README.md",
+    ],
     zip_safe=False
 )
