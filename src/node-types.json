@@ -37,6 +37,7 @@
   {
     "type": "comment",
     "named": true,
+    "extra": true,
     "fields": {}
   },
   {
@@ -248,6 +249,7 @@
   {
     "type": "sections",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,

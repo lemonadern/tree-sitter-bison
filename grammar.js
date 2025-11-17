@@ -17,7 +17,8 @@
    You should have received a copy of the GNU Lesser General Public License
    along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
 
-
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
 
 const IDENTIFIER = /(\p{XID_Start}|_|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})(\p{XID_Continue}|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})*/
 const RESULT = IDENTIFIER
