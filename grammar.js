@@ -1,6 +1,7 @@
 /* Bison Grammar Parser
 
    Copyright (C) 2023 BTuin.
+   Copyright (C) 2025 lemonadern
 
    This file is part of tree-sitter-bison, a Bison grammar for tree-sitter.
 
@@ -15,12 +16,14 @@
    GNU Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public License
-   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+ */
 
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const IDENTIFIER = /(\p{XID_Start}|_|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})(\p{XID_Continue}|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})*/
+const IDENTIFIER = /(\p{XID_Start}|_|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})(\p{XID_Continue}|\\u[0-9A-Fa-f]{4}|\\U[0-9A-Fa-f]{8})*/u
 const RESULT = IDENTIFIER
 const CHAR = /[^\n']/
 const NONTERMINAL = IDENTIFIER
