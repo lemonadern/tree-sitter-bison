@@ -177,6 +177,10 @@
           "named": true
         },
         {
+          "type": "precedence_directive",
+          "named": true
+        },
+        {
           "type": "string_literal",
           "named": true
         }
@@ -226,6 +230,29 @@
         },
         {
           "type": "grammar_rules_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "precedence_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "char_literal",
+          "named": true
+        },
+        {
+          "type": "grammar_rule_identifier",
+          "named": true
+        },
+        {
+          "type": "string_literal",
           "named": true
         }
       ]
@@ -340,6 +367,10 @@
   },
   {
     "type": "%merge",
+    "named": false
+  },
+  {
+    "type": "%prec",
     "named": false
   },
   {

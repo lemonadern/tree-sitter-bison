@@ -318,6 +318,10 @@
           ]
         },
         {
+          "type": "SYMBOL",
+          "name": "precedence_directive"
+        },
+        {
           "type": "ALIAS",
           "content": {
             "type": "SYMBOL",
@@ -329,6 +333,32 @@
         {
           "type": "SYMBOL",
           "name": "action"
+        }
+      ]
+    },
+    "precedence_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "%prec"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "grammar_rule_identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "char_literal"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "string_literal"
+            }
+          ]
         }
       ]
     },

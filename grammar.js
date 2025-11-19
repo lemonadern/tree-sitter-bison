@@ -111,8 +111,19 @@ module.exports = grammar({
 						$.grammar_rule_identifier,
 					),
 					optional(seq('[', IDENTIFIER, ']'))),
+				$.precedence_directive,
 				alias($.directive_merge, $.directive),
 				$.action,
+			),
+
+		precedence_directive: $ =>
+			seq(
+				'%prec',
+				choice(
+					$.grammar_rule_identifier,
+					$.char_literal,
+					$.string_literal
+				)
 			),
 
 		action: $ =>
