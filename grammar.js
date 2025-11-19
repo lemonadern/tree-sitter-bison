@@ -93,13 +93,13 @@ module.exports = grammar({
 							seq(optional($.action),
 								alias($.directive_empty, $.directive),
 								optional($.action)),
-							repeat1($._component))),
+							repeat($._component))),
 					repeat(
 						seq(
 							'|',
 							choice(
 								alias($.directive_empty, $.directive),
-								repeat1($._component))))),
+								repeat($._component))))),
 				';'),
 
 		_component: $ =>
