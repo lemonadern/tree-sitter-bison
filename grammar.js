@@ -341,6 +341,7 @@ module.exports = grammar({
 		_decl_name_prefix: $ =>
 			seq(
 				declarationName($, 'name-prefix'),
+				optional('='),
 				$.string_literal),
 
 		_decl_no_lines: $ =>

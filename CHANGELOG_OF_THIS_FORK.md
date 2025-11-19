@@ -1,6 +1,10 @@
 # tree-sitter-bison (forked by lemonadern) - Changelog
 
-This changelog tracks local changes in this workspace fork.
+This changelog tracks changes on this fork.
+
+## Unreleased
+
+- fix: allow `=` after `%name-prefix` (Bison declaration), e.g. `%name-prefix="base_yy"`
 
 ## 2025-11-19
 
