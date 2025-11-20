@@ -1,3 +1,4 @@
 [workspace]
 git_release_enable = true
 publish = false
+release_always = false
