@@ -27,7 +27,8 @@
     "README.md",
     "LICENSE",
     "COPYING.GPL3",
-    "COPYING.LGPL3"
+    "COPYING.LGPL3",
+    "COPYING.MIT"
   ],
   "dependencies": {
     "node-addon-api": "^8.5.0",

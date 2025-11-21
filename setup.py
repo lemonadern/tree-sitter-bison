@@ -77,6 +77,7 @@ setup(
         "LICENSE",
         "COPYING.GPL3",
         "COPYING.LGPL3",
+        "COPYING.MIT",
         "README.md",
     ],
     zip_safe=False

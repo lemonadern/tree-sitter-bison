@@ -18,10 +18,11 @@ include = [
   "queries/*",
   "src/*",
   "tree-sitter.json",
-  "/LICENSE",
-  "/README.md",
-  "/COPYING.GPL3",
-  "/COPYING.LGPL3",
+  "LICENSE",
+  "README.md",
+  "COPYING.GPL3",
+  "COPYING.LGPL3",
+  "COPYING.MIT",
 ]
 
 [lib]
